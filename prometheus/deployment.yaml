@@ -17,4 +17,4 @@ spec:
       - name: prometheus
         image: prom/prometheus:v2.24.0 # UPDATE ME!
         ports:
-        - containerPort: 80
+        - containerPort: 9090
