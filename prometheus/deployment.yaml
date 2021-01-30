@@ -17,7 +17,7 @@ spec:
       - name: prometheus
         image: prom/prometheus:v2.24.0 # UPDATE ME!
         ports:
-        - containerPort: 9090
+          - containerPort: 9090
         volumeMounts:
           - name: config
             mountPath: /etc/prometheus
