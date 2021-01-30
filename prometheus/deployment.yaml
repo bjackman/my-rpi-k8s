@@ -18,3 +18,14 @@ spec:
         image: prom/prometheus:v2.24.0 # UPDATE ME!
         ports:
         - containerPort: 9090
+        volumeMounts:
+          - name: config
+            mountPath: /etc/prometheus
+            readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: prometheus-config
+            items:
+              - key: config
+                path: prometheus.yml
