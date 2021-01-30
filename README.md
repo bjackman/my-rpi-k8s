@@ -1,11 +1,17 @@
 Commands
 ===
 
-```
-export KUBECONFIG=$PWD/k3s.yaml
+- Set up kubectl: `export KUBECONFIG=$PWD/k3s.yaml`
 
-kubectl --kubeconfig k3s.yaml apply -f prometheus/deployment.yaml  # or whichever file
-```
+- You need to have a DNS server running in your cluster for serviec discovery purposes. It maps the name of each services to its ClusterIP. So...
+
+  ```
+  ./coredns-deployment/kubernetes/deploy.sh | kubectl apply -f -
+  ```
+
+  🤠 🤠 YEE HAW we're CLOUD NATIVE baybee! 🤠 🤠
+
+- Now you have to `kubectl apply` all the resources described by the YAML files in here. Not sure if it matters which order you do this in. You'll figure it out.
 
 TODOs
 ===
@@ -18,6 +24,7 @@ Stuff outside this repo:
 
 Stuff inside this repo:
 
+- Put these k8s resources in a damn namespace you silly idiot
 - Find out how to continuously deliver prometheus
 - Switch to Ingress (?) to get rid of NodePort hackery
 - Persist & share prometheus data

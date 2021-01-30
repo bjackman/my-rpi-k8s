@@ -1,0 +1,3 @@
+[submodule "coredns-deployment"]
+	path = coredns-deployment
+	url = git@github.com:coredns/deployment.git
