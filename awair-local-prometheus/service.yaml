@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: awair-local-prometheus
+spec:
+  selector:
+    app: awair-local-prometheus
+  ports:
+    - port: 8080
+      targetPort: 8080
