@@ -18,8 +18,7 @@ TODOs
 
 Stuff outside this repo:
 
-- Find a way to monitor the cluster host OS (resource availability, host upgrade
-  status)?
+- Find a way to monitor the cluster host OS (host upgrade status)?
 - Install system-upgrade-controller to auto-upgrade k3s
 
 Stuff inside this repo:
@@ -27,4 +26,7 @@ Stuff inside this repo:
 - Put these k8s resources in a damn namespace you silly idiot
 - Find out how to continuously deliver prometheus
 - Switch to Ingress (?) to get rid of NodePort hackery
-- Persist & share prometheus data
+- Persist & share prometheus data (Cortex)
+- node_exporter
+- Grafana
+- Package all the resources so deployment is a single op (Helm?)
