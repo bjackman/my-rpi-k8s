@@ -27,4 +27,4 @@ Stuff inside this repo:
 - Find out how to continuously deliver prometheus
 - Persist & share prometheus data (Cortex)
 - node_exporter
-- Grafana
+- Grafana (with peristent dashbards)
