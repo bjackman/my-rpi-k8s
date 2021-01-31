@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: prometheus-deployment
+  name: prometheus
   labels:
     app: prometheus
 spec:
@@ -25,7 +25,7 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: prometheus-config
+            name: prometheus
             items:
               - key: config
                 path: prometheus.yml

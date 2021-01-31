@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: prometheus-config
+  name: prometheus
 data:
   config: |
     # my global config
@@ -30,11 +30,11 @@ data:
         static_configs:
         - targets: ['localhost:9090']
       # And now we scrape from the awair-local-prometheus service
-      - job_name: 'awair-local-prometheus'
+      - job_name: 'awair'
         static_configs:
-        - targets: ['awair-local-prometheus:8080']
+        - targets: ['awair:8080']
       - job_name: 'air-data'
         metrics_path: '/air-data'
         static_configs:
-        - targets: ['awair-local-prometheus:8080']
+        - targets: ['awair:8080']
 

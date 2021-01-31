@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: awair-local-prometheus-deployment
+  name: awair
   labels:
-    app: awair-local-prometheus
+    app: awair
 spec:
   selector:
     matchLabels:
-      app: awair-local-prometheus
+      app: awair
   template:
     metadata:
       labels:
-        app: awair-local-prometheus
+        app: awair
     spec:
       containers:
-      - name: awair-local-prometheus
+      - name: awair
         image: bjackman/awair-local-prometheus:latest
         ports:
           - containerPort: 8080

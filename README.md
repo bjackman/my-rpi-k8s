@@ -11,7 +11,7 @@ Commands
 
   🤠 🤠 YEE HAW we're CLOUD NATIVE baybee! 🤠 🤠
 
-- Now you have to `kubectl apply` all the resources described by the YAML files in here. Not sure if it matters which order you do this in. You'll figure it out.
+- Now something like `helm upgrade --install graphs .`
 
 TODOs
 ===
@@ -29,4 +29,3 @@ Stuff inside this repo:
 - Persist & share prometheus data (Cortex)
 - node_exporter
 - Grafana
-- Package all the resources so deployment is a single op (Helm?)
