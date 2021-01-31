@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     app: prometheus
-  type: NodePort # TODO use Ingress instead
+  type: ClusterIP
   ports:
     - port: 9090
       targetPort: 9090

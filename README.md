@@ -25,7 +25,6 @@ Stuff inside this repo:
 
 - Put these k8s resources in a damn namespace you silly idiot
 - Find out how to continuously deliver prometheus
-- Switch to Ingress (?) to get rid of NodePort hackery
 - Persist & share prometheus data (Cortex)
 - node_exporter
 - Grafana
