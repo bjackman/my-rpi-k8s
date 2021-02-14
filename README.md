@@ -30,4 +30,5 @@ Stuff inside this repo:
 - Grafana (with peristent dashbards)
 - Parameterise the helm chart:
   - "rpi"
+  - port numbers?
 

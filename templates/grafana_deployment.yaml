@@ -28,3 +28,14 @@ spec:
             value: "%(protocol)s://%(domain)s:%(http_port)s/grafana/"
           - name: "GF_SERVER_SERVE_FROM_SUB_PATH"
             value: "true"
+        volumeMounts:
+          - name: provisioning
+            mountPath: /etc/grafana/provisioning
+            readOnly: true
+      volumes:
+        - name: provisioning
+          configMap:
+            name: grafana-provisioning
+            items:
+              - key: data_source
+                path: datasources/prometheus.yaml

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-provisioning
+data:
+  # https://grafana.com/docs/grafana/latest/administration/provisioning/#example-data-source-config-file
+  data_source: |
+    apiVersion: 1
+    datasources:
+    - name: Prometheus
+      type: prometheus
+      # Have Grafana backend fetch this data source, instead of user's browser
+      access: proxy
+      url: "http://prometheus:9090/prom"
+      version: 1
+      editable: false
+
