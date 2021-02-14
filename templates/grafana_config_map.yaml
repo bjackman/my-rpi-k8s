@@ -180,7 +180,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "Prometheus",
           "fieldConfig": {
             "defaults": {
               "custom": {}
@@ -402,7 +402,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "Prometheus",
           "fieldConfig": {
             "defaults": {
               "custom": {}
@@ -505,7 +505,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "Prometheus",
           "fieldConfig": {
             "defaults": {
               "custom": {}
@@ -613,7 +613,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "Prometheus",
           "fieldConfig": {
             "defaults": {
               "custom": {}
@@ -721,7 +721,7 @@ data:
       "timezone": "",
       "title": "Air",
       "uid": "K9JMWTLMk",
-      "version": 9
+      "version": 10
     }
   dashboard_airscraper: |
     {
@@ -752,7 +752,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "Prometheus",
           "fieldConfig": {
             "defaults": {
               "custom": {}
@@ -859,5 +859,5 @@ data:
       "timezone": "",
       "title": "Awair Scraper",
       "uid": "arrA4aEMz",
-      "version": 1
+      "version": 2
     }
