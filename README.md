@@ -20,14 +20,15 @@ Stuff outside this repo:
 
 - Find a way to monitor the cluster host OS (host upgrade status)?
 - Install system-upgrade-controller to auto-upgrade k3s
+- Go multi-node
 
 Stuff inside this repo:
 
 - Put these k8s resources in a damn namespace you silly idiot
-- Find out how to continuously deliver prometheus
+- Find out how to continuously deliver stuff
 - Persist & share prometheus data (Cortex)
 - node_exporter
-- Grafana (with peristent dashbards)
+- https://github.com/pdreker/fritzbox_exporter
 - Parameterise the helm chart:
   - "rpi"
   - port numbers?
