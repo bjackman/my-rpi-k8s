@@ -28,3 +28,6 @@ Stuff inside this repo:
 - Persist & share prometheus data (Cortex)
 - node_exporter
 - Grafana (with peristent dashbards)
+- Parameterise the helm chart:
+  - "rpi"
+
