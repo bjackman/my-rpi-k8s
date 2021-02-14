@@ -32,10 +32,25 @@ spec:
           - name: provisioning
             mountPath: /etc/grafana/provisioning
             readOnly: true
+          - name: dashboards
+            mountPath: /var/lib/grafana/dashboards
+            readOnly: true
       volumes:
         - name: provisioning
           configMap:
-            name: grafana-provisioning
+            name: grafana
             items:
               - key: data_source
                 path: datasources/prometheus.yaml
+              - key: dashboards
+                path: dashboards/dashboards.yaml
+        - name: dashboards
+          configMap:
+            name: grafana
+            items:
+              - key: dashboard_airdata
+                path: airdata.json
+              - key: dashboard_airscraper
+                path: airscraper.json
+
+
