@@ -62,5 +62,7 @@ spec:
                 path: airdata.json
               - key: dashboard_airscraper
                 path: airscraper.json
+              - key: dashboard_nodes
+                path: nodes.json
 
 
