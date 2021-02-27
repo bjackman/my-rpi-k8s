@@ -37,4 +37,6 @@ data:
         metrics_path: '/air-data'
         static_configs:
         - targets: ['awair:8080']
-
+      - job_name: 'nodes'
+        static_configs:
+        - targets: ['rpi:9100']
