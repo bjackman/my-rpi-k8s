@@ -28,6 +28,16 @@ spec:
             value: "%(protocol)s://%(domain)s:%(http_port)s/grafana/"
           - name: "GF_SERVER_SERVE_FROM_SUB_PATH"
             value: "true"
+          # https://grafana.com/docs/grafana/latest/auth/overview/#anonymous-authentication
+          - name: "GF_AUTH_ANONYMOUS_ENABLED"
+            value: "true"
+          - name: "GF_AUTH_ANONYMOUS_ORG_NAME"
+            value: "Main Org."
+          - name: "GF_AUTH_ANONYMOUS_ORG_ROLE"
+            value: "Viewer"
+          # There is no auth lol
+          - name: "GF_AUTH_BASIC_ENABLED"
+            value: "false"
         volumeMounts:
           - name: provisioning
             mountPath: /etc/grafana/provisioning
