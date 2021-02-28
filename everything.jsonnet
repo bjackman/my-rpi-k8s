@@ -200,7 +200,7 @@ local dashboard_scraper = importstr "dashboard_scraper.json";
               },
             },
             volumes_: {
-              provisioning: {
+              dashboards: {
                 configMap: {
                   name: name,
                   items: [
@@ -219,7 +219,7 @@ local dashboard_scraper = importstr "dashboard_scraper.json";
                   ],
                 },
               },
-              dashboards: {
+              provisioning: {
                 configMap: {
                   name: name,
                   items: [
