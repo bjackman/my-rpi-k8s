@@ -5,7 +5,6 @@ local dashboard_airdata = importstr "dashboard_airdata.json";
 local dashboard_scraper = importstr "dashboard_scraper.json";
 
 {
-  # TODO: make this refer to the other bits.
   ingress: kube.Ingress("graphs") {
     spec: {
       rules: [
@@ -16,20 +15,14 @@ local dashboard_scraper = importstr "dashboard_scraper.json";
                 path: "/prom",
                 pathType: "Prefix",
                 backend: {
-                  service: {
-                    name: "prometheus",
-                    port: { number: 9090 },
-                  },
+                  service: $.prometheus.svc.name_port,
                 },
               },
               {
                 path: "/grafana",
                 pathType: "Prefix",
                 backend: {
-                  service: {
-                    name: "grafana",
-                    port: { number: 3000 },
-                  },
+                  service: $.grafana.svc.name_port,
                 },
               },
             ],
