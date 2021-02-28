@@ -169,8 +169,10 @@
     ],
     // Useful in Ingress rules
     name_port:: {
-      serviceName: service.metadata.name,
-      servicePort: service.spec.ports[0].port,
+      name: service.metadata.name,
+      port: {
+        number: service.spec.ports[0].port,
+      },
     },
 
     spec: {
@@ -578,7 +580,7 @@
     },
   },
 
-  Ingress(name): $._Object("networking.k8s.io/v1beta1", "Ingress", name) {
+  Ingress(name): $._Object("networking.k8s.io/v1", "Ingress", name) {
     spec: {},
 
     local rel_paths = [
