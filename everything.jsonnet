@@ -264,6 +264,8 @@ local dashboard_kubelet = importstr "dashboard_kubelet.json";
                   "GF_AUTH_ANONYMOUS_ORG_ROLE": "Viewer",
                   # There is no auth lol
                   "GF_AUTH_BASIC_ENABLED": "false",
+                  # is this secure lol
+                  "GF_AUTH_DISABLE_LOGIN_FORM": "true",
                 },
                 volumeMounts_: {
                   provisioning: {
