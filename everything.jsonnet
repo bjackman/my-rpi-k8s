@@ -195,21 +195,7 @@ local dashboard_scraper = importstr "dashboard_scraper.json";
             volumes_: {
               dashboards: {
                 configMap: {
-                  name: name,
-                  items: [
-                    {
-                      key: "dashboard_airdata",
-                      path: "airdata.json",
-                    },
-                    {
-                      key: "dashboard_airscraper",
-                      path: "airscraper.json",
-                    },
-                    // {
-                    //   key: "dashboard_nodes",
-                    //   path: "nodes.json",
-                    // },
-                  ],
+                  name: grafana.dashboardsConfig.metadata.name,
                 },
               },
               provisioning: {
@@ -233,9 +219,15 @@ local dashboard_scraper = importstr "dashboard_scraper.json";
       },
     },
 
-    // # TODO make this more concise.
+    dashboardsConfig: kube.ConfigMap(name + "-dashboards") {
+      data: {
+        "airdata.json": dashboard_airdata,
+        "airscraper.json": dashboard_scraper,
+        // dashboard_node: dashboard_node,
+      },
+    },
 
-    config: kube.ConfigMap(name) {
+    provisioningConfig: kube.ConfigMap(name + "-provisioning") {
       data: {
         # https://grafana.com/docs/grafana/latest/administration/provisioning/#example-data-source-config-file
         data_source: |||
@@ -260,10 +252,7 @@ local dashboard_scraper = importstr "dashboard_scraper.json";
                 path: /var/lib/grafana/dashboards
                 foldersFromFileStructor: true
         |||,
-        dashboard_airdata: dashboard_airdata,
-        dashboard_scraper: dashboard_scraper,
-        // dashboard_node: dashboard_node,
       },
-    },
+    }
   },
 }
