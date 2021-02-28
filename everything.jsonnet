@@ -4,6 +4,7 @@ local kube = import "kube.libsonnet";
 local dashboard_airdata = importstr "dashboard_airdata.json";
 local dashboard_scraper = importstr "dashboard_scraper.json";
 local dashboard_node = importstr "dashboard_node.json";
+local dashboard_kubelet = importstr "dashboard_kubelet.json";
 
 {
   ingress: kube.Ingress("graphs") {
@@ -66,6 +67,10 @@ local dashboard_node = importstr "dashboard_node.json";
         apiGroups: [""],
         resources: ["services", "endpoints", "pods", "nodes", "nodes/proxy", "nodes/metrics"],
         verbs: ["get", "list", "watch"],
+      },
+      {
+        nonResourceURLs: ["/metrics"],
+        verbs: ["get"],
       },
     ],
   },
@@ -165,7 +170,15 @@ local dashboard_node = importstr "dashboard_node.json";
             - job_name: 'nodes'
               static_configs:
               - targets: ['rpi:9100']
+            # TODO This doesn't work, we get 401 Unauthorized. Might be missing
+            # cluster/kubelet config for RBAC. Not sure, don't think I care
+            # enough.
             - job_name: 'kubelets'
+              scheme: https
+              tls_config:
+                ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+              authorization:
+                credentials_file: /var/run/secrets/kubernetes.io/serviceaccount/token
               kubernetes_sd_configs:
               - role: node
         |||,
@@ -247,6 +260,7 @@ local dashboard_node = importstr "dashboard_node.json";
         "airdata.json": dashboard_airdata,
         "airscraper.json": dashboard_scraper,
         "dashboard_node.json": dashboard_node,
+        "dashboard_kubelet.json": dashboard_kubelet,
       },
     },
 
