@@ -222,8 +222,7 @@ local dashboard_kubelet = importstr "dashboard_kubelet.json";
               scheme: https
               tls_config:
                 ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
-              authorization:
-                credentials_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+              bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
               kubernetes_sd_configs:
               - role: node
         |||,
