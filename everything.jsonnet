@@ -212,9 +212,6 @@ local dashboard_kubelet = importstr "dashboard_kubelet.json";
               metrics_path: '/air-data'
               static_configs:
               - targets: ['awair:8080']
-            - job_name: 'nodes'
-              static_configs:
-              - targets: ['rpi:9100']
             # TODO This doesn't work, we get 401 Unauthorized. Might be missing
             # cluster/kubelet config for RBAC. Not sure, don't think I care
             # enough.
