@@ -81,6 +81,7 @@ local dashboard_node = importstr "dashboard_node.json";
                   "--web.console.libraries=/usr/share/prometheus/console_libraries",
                   "--web.console.templates=/usr/share/prometheus/consoles",
                   "--web.external-url=http://rpi/prom",
+                  "--web.enable-lifecycle",
                 ],
                 ports: [{ name: name, containerPort: 9090 }],
                 volumeMounts_: {
