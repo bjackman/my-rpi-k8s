@@ -202,6 +202,7 @@ local dashboard_kubelet = importstr "dashboard_kubelet.json";
           scrape_configs:
             # Here it's Prometheus itself.
             - job_name: 'prometheus'
+              metrics_path: '/prom/metrics'
               static_configs:
               - targets: ['localhost:9090']
             # And now we scrape from the awair-local-prometheus service
