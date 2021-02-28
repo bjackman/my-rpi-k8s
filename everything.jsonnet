@@ -114,9 +114,9 @@ local dashboard_kubelet = importstr "dashboard_kubelet.json";
               },
             },
             volumes_: {
-              "dev": {hostPath: {path: "/host/dev" }},
-              "proc": {hostPath: {path: "/host/proc" }},
-              "sys": {hostPath: {path: "/host/sys" }},
+              "dev": {hostPath: {path: "/dev" }},
+              "proc": {hostPath: {path: "/proc" }},
+              "sys": {hostPath: {path: "/sys" }},
               "rootfs": {hostPath: {path: "/" }},
             },
           },
