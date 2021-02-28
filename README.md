@@ -18,6 +18,10 @@ Commands
 TODOs
 ===
 
+Current status: node-exporter is running and I think Prometheus is discovering
+and scraping it. Same for kubelet metrics. However for some reason the Grafana
+dashboards for that don't work.
+
 Stuff outside this repo:
 
 - Find a way to monitor the cluster host OS (host upgrade status)?
