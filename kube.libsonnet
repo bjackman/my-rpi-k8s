@@ -618,6 +618,9 @@
   },
 
   ServiceAccount(name): $._Object("v1", "ServiceAccount", name) {
+    metadata+: {
+      namespace: "default",
+    },
   },
 
   Role(name): $._Object("rbac.authorization.k8s.io/v1", "Role", name) {

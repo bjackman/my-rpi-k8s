@@ -58,6 +58,23 @@ local dashboard_node = importstr "dashboard_node.json";
     },
   },
 
+  # Copied this stuff from
+  # https://rtfm.co.ua/en/kubernetes-monitoring-with-prometheus-exporters-a-service-discovery-and-its-roles/#Prometheus_ClusterRole,_ServiceAccount,_and_ClusterRoleBinding
+  role: kube.ClusterRole("readonly") {
+    rules: [
+      {
+        apiGroups: [""],
+        resources: ["services", "endpoints", "pods", "nodes", "nodes/proxy", "nodes/metrics"],
+        verbs: ["get", "list", "watch"],
+      },
+    ],
+  },
+  account: kube.ServiceAccount("readonly"),
+  binding: kube.ClusterRoleBinding("readonly") {
+    subjects_: [$.account],
+    roleRef_: $.role,
+  },
+
   prometheus: {
     local name = "prometheus",
     local prometheus = self,
@@ -70,6 +87,7 @@ local dashboard_node = importstr "dashboard_node.json";
       spec+: {
         template+: {
           spec+: {
+            serviceAccountName: $.account.metadata.name,
             containers_: {
               [name]: kube.Container(name) {
                 name: name,
@@ -147,6 +165,9 @@ local dashboard_node = importstr "dashboard_node.json";
             - job_name: 'nodes'
               static_configs:
               - targets: ['rpi:9100']
+            - job_name: 'kubelets'
+              kubernetes_sd_configs:
+              - role: node
         |||,
       },
     },
