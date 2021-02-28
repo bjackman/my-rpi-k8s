@@ -80,6 +80,51 @@ local dashboard_kubelet = importstr "dashboard_kubelet.json";
     roleRef_: $.role,
   },
 
+  nodeExporter: {
+    local name = "node-exporter",
+    local nodeExporter = self,
+
+    svc: kube.Service(name) {
+      target_pod: nodeExporter.daemonSet.spec.template,
+    },
+
+    daemonSet: kube.DaemonSet(name) {
+      spec+: {
+        template+: {
+          spec+: {
+            hostPID: true,
+            hostIPC: true,
+            hostNetwork: true,
+            containers_: {
+              [name]: kube.Container(name) {
+                image: "prom/node-exporter",
+                args: [
+                  "--path.procfs", "/host/proc",
+                  "--path.sysfs", "/host/sys",
+                  "--collector.filesystem.ignored-mount-points", '"^/(sys|proc|dev|host|etc)($|/)"',
+                ],
+                ports: [{ name: name, containerPort: 9100 }],
+                securityContext: { privileged: true },
+                volumeMounts_: {
+                  "dev": {mountPath: "/host/dev" },
+                  "proc": {mountPath: "/host/proc" },
+                  "sys": {mountPath: "/host/sys" },
+                  "rootfs": {mountPath: "/rootfs" },
+                },
+              },
+            },
+            volumes_: {
+              "dev": {hostPath: {path: "/host/dev" }},
+              "proc": {hostPath: {path: "/host/proc" }},
+              "sys": {hostPath: {path: "/host/sys" }},
+              "rootfs": {hostPath: {path: "/" }},
+            },
+          },
+        },
+      },
+    },
+  },
+
   prometheus: {
     local name = "prometheus",
     local prometheus = self,
